@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.raj.reciever"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.raj.reciever"
@@ -17,7 +17,9 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    buildFeatures {
+        aidl = true // Explicitly enable AIDL processing
+    }
     buildTypes {
         release {
             isMinifyEnabled = false
