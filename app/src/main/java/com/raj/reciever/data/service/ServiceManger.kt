@@ -35,15 +35,14 @@ class ServiceManger {
     }
 
     fun connectService(context: Context) {
-        val intent = Intent()
-        intent.setClassName(
-            "com.raj.aidlsender", // Package name of the target app
-            "com.raj.aidlsender.data.service.MessageService" // Full path of the service class
-        )
-        //intent.setAction("com.raj.aidlsender.service.SetCallback")
-        val res = context.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE)
-        Log.i("MessageService", "bindService " + res)
-
+        val intent = Intent().apply {
+            setClassName(
+                "com.raj.aidlsender", // Package name of the target app
+                "com.raj.aidlsender.data.service.MessageService" // Full path of the service class
+            )
+            action = "com.raj.aidlsender.service.SetCallback"
+        }
+        context.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE)
     }
 
     fun disconnectService() {
